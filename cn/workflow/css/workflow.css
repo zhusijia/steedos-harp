@@ -1,0 +1,48 @@
+p.text-center.description {
+	padding-bottom: 15px;
+}
+
+.section.workflow-feature {
+	margin: 0;
+	padding-top: 0;
+}
+
+.section.workflow-feature .card {
+	border: none;
+	box-shadow: none;
+	min-height: 280px;
+}
+
+.section.workflow-feature .card p {
+	font-size: 15px;
+}
+
+.section.workflow-feature hr {
+	border-color: rgba(34, 36, 38, 0.15);
+}
+
+.section.workflow-feature .workflow-help .card {
+	min-height: 320px;
+}
+
+.section.workflow-feature .workflow-help .card .btn-help {
+	border: 1px solid #888;
+    margin-top: 15px;
+}
+
+.row .success-example p {
+	margin-top: 0;
+}
+
+.row .success-example {
+	margin-top: 25px;
+}
+
+.row .success-example small {
+	color: #999;
+    display: block;
+    line-height: 1.428571429;
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
