@@ -644,6 +644,7 @@ a:focus, a:active {
 .footer {
   background-color: #444444;
   line-height: 20px;
+  margin-top: 50px;
 }
 .footer nav > ul {
   list-style: none;
@@ -1050,7 +1051,7 @@ a:focus, a:active {
 }
 
 .landing-page .parallax.submodule {
-  height: 330px;
+  height: 300px;
 }
 
 .landing-page .parallax .container{
@@ -1188,7 +1189,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
 
 .landing-page .parallax .description{
   text-align: center;
-  margin-top: 100px;
+  margin-top: 126px;
   color: white;
   padding: 5px;
 }
