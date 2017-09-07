@@ -1,3 +1,11 @@
+/*.steedos-workflow .wrapper {
+	background: #F2F2F2;
+}
+
+.steedos-workflow .wrapper .workflow-feature {
+	background: #F2F2F2;
+}*/
+
 /* workflow */
 p.text-center.description {
 	padding-bottom: 15px;
@@ -11,11 +19,28 @@ p.text-center.description {
 .section.workflow-feature .card {
 	border: none;
 	box-shadow: none;
-	min-height: 280px;
+	min-height: 260px;
+	margin-bottom: 0;
+	margin-top: 10px;
+}
+
+.section.workflow-feature .card .icon i.ion {
+	color: #555;
+}
+
+.section.workflow-feature .card h4 {
+	font-weight: bold;
 }
 
 .section.workflow-feature .card p {
 	font-size: 15px;
+	font-weight: normal;
+	color: #333;
+}
+
+.section.workflow-feature .card p.text-muted {
+	font-weight: bold;
+	color: #999;
 }
 
 .section.workflow-feature hr {
@@ -29,6 +54,11 @@ p.text-center.description {
 .section.workflow-feature .workflow-help .card .btn-help {
 	border: 1px solid #888;
 	margin-top: 15px;
+	font-size: 15px;
+	background-image: linear-gradient(#6d94bf,#446e9b 50%,#3e648d);
+    background-image: -webkit-linear-gradient(#6d94bf,#446e9b 50%,#3e648d);
+    background-repeat: no-repeat;
+    color: #FFF;
 }
 
 .row .success-example p {
@@ -37,6 +67,7 @@ p.text-center.description {
 
 .row .success-example {
 	margin-top: 25px;
+	border-left: 4px solid #eee;
 }
 
 .row .success-example small {
@@ -45,7 +76,6 @@ p.text-center.description {
 	line-height: 1.428571429;
 	font-size: 12px;
 	margin-top: 15px;
-	margin-bottom: 40px;
 }
 
 /* casestudy */

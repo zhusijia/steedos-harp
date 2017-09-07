@@ -63,8 +63,7 @@
     transition: all .3s;
     -webkit-opacity: .5;
     -moz-opacity: .5;
-    opacity: .5;
-    filter: alpha(opacity=50);
+    opacity: 1 !important;
     -webkit-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
     transform: scale(1, 1);
@@ -125,12 +124,12 @@
 .index_download_item_title {
     margin-bottom: 4px;
     color: #323232;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 .index_download_item_desc {
     color: silver;
-    font-size: 12px;
+    font-size: 16px;
     opacity: 0;
 }
 
@@ -287,8 +286,4 @@
     background-image: url(/cn/libs/download/desktop-windows.png);
     background-position: 2px 0;
     background-repeat: no-repeat;
-}
-
-.index_download_item_iconWrap_hoverIcon:hover {
-    opacity: 1 !important;
 }
