@@ -89,3 +89,9 @@ p.text-center.description {
     padding-top: 30px;
     border-top: 1px solid rgba(34, 36, 38, 0.15);
 }
+
+/*pricing*/
+
+.pricing-block {
+	margin: 50px 0;
+}

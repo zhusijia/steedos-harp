@@ -1049,6 +1049,10 @@ a:focus, a:active {
   background-size: 100%;
 }
 
+.landing-page .parallax.submodule {
+  height: 330px;
+}
+
 .landing-page .parallax .container{
   z-index: 2;
   position: absolute;
