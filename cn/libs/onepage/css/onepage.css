@@ -626,10 +626,20 @@ a:focus, a:active {
   opacity: 1;
 }
 
-.navbar-transparent .navbar-nav > li > a:hover,.navbar-fixed-top.filled .navbar-nav > li > a:hover {
+.navbar-transparent .navbar-nav > li > a:hover,
+.navbar-transparent .navbar-nav > li > a:focus {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
 }
+
+.navbar-fixed-top.filled .navbar-nav > li > a:hover,
+.navbar-fixed-top.filled .navbar-nav > li > a:focus {
+  background-color: rgba(43,43,43,0.1);
+  border-radius: 3px;
+}
+
+
+
 
 .navbar-fixed-top.filled .logo-container .brand,.navbar-fixed-top.filled .navbar-nav > li > a{
   color: #555555;
@@ -638,6 +648,10 @@ a:focus, a:active {
 @media (max-width: 767px) {
   .navbar-fixed-top.filled .logo-container .brand,.navbar-fixed-top.filled .navbar-nav > li > a {
     color: #FFFFFF !important;
+  }
+  .navbar-fixed-top.filled .navbar-nav > li > a:hover,
+  .navbar-fixed-top.filled .navbar-nav > li > a:focus {
+    background-color: rgba(255, 255, 255, 0.2);
   }
 }
 

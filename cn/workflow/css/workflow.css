@@ -24,6 +24,10 @@ p.text-center.description {
 	margin-top: 10px;
 }
 
+.section.workflow-feature .header-introduction {
+	line-height: 42px;
+}
+
 .section.workflow-feature .card .icon i.ion {
 	color: #555;
 }
