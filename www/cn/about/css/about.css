@@ -1,0 +1,21 @@
+.steedos-about p.feature {
+	font-size: 20.5;
+	color: #f5593d;
+	font-weight: bold;
+}
+
+.steedos-about section p {
+	font-size: 17px;
+}
+
+.steedos-about h5 {
+	font-weight: bold;
+}
+
+.steedos-about h5 .ion {
+	font-size: 30%;
+	color: #fab526;
+	margin-right: 20px;
+	position: relative;
+	top: -2px;
+}

@@ -93,7 +93,69 @@
 	</nav>
 	<div class="wrapper">
 
-		<%- yield %>
+		<div class="parallax filter-gradient gray" data-color="gray">
+    <div class="parallax-background">
+        <img class="parallax-background-image" src="/cn/libs/img/banner/traveling_large.jpg">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="description">
+                <h2>华炎办公</h2>
+                <br>
+                <h5>
+                    打造手机、平板、电脑三合一的优质软件，帮助您随时随地移动办公。
+                </h5>
+            </div>
+            <div class="buttons">
+                <a href="/steedos/sign-up/" target="_blank" class="btn btn-simple btn-round btn-white btn-lg btn-login" target="_blank">注册试用</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top: 60px">
+	<div class="col-md-6 product-container" style="border-right: 1px solid #D4D4D5;border-bottom: 1px solid #D4D4D5">
+		<div class="text-center">
+			<img src="/cn/libs/img/workflow/workflow.png">
+		</div>
+		<div class="text text-center">
+			<h4>审批王</h4>
+			<p>
+				审批王是全新的企业级在线审批系统，可以快速的将公司的各类审批业务转换为可严格执行的电子流程。可处理的审批业务包括：出差申请、差旅报销、请假销假、物品采购、付款申请、固定资产报废、会议室预约、退库管理、客服投诉等。
+			</p>
+		</div>
+		<div class="buttons text-center">
+			<a class="btn btn-fill btn-neutral btn-link" href="/cn/workflow">了解审批王</a>
+		</div>
+	</div>
+	<div class="col-md-6 product-container" style="border-bottom: 1px solid #D4D4D5">
+		<div class="text-center">
+			<img src="/cn/libs/img/meeting/meeting.png">
+		</div>
+		<div class="text text-center">
+			<h4>会议管理</h4>
+			<p>
+				华炎会议管理系统的价值就是帮您解决现实中会议方面遇到的困扰，您可以收到会议邀请的实时信息，可以进行在线会议邀请，可以随时随地了解会议室的使用情况，真正做到会议邀请，实时送达；会议安排，游刃有余！
+			</p>
+		</div>
+		<div class="buttons text-center">
+			<a class="btn btn-fill btn-neutral btn-link" href="/cn/meeting">了解会议管理</a>
+		</div>
+	</div>
+	<div class="col-md-6 product-container" style="border-right: 1px solid #D4D4D5">
+		<div class="text-center">
+			<img src="/cn/libs/img/drive/drive.png">
+		</div>
+		<div class="text text-center">
+			<h4>华炎云盘</h4>
+			<p>
+				团队喜欢的企业网盘，企业所需的管理方案。华炎云盘是一款深受公司员工喜爱的文件备份、共享与协作解决方案。提供桌面同步客户端，可以将您的本地文件夹实时自动备份到云端，并自动为您保存文件历史版本。您可以与他人共享，还可以随时使用手机访问文件。
+			</p>
+		</div>
+		<div class="buttons text-center">
+			<a class="btn btn-fill btn-neutral btn-link" href="/cn/drive">了解云盘</a>
+		</div>
+	</div>
+</div>
 
 		<!-- footer -->
 		<div class="footer">
@@ -149,7 +211,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		var path = "<%- current.path %>";
+		var path = "cn,index";
 		console.log(path);
 	</script>
 </body>

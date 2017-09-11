@@ -1,0 +1,289 @@
+.index_download_item {
+    display: inline-block;
+}
+
+.index_download {
+    margin: 60px auto;
+}
+
+.index_download_cnt {
+    width: 100%;
+    text-align: justify;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.index_download_cnt:after {
+    content: ".";
+    display: inline-block;
+    width: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0;
+}
+
+.index_download_item,
+.index_download_item_desc,
+.index_download_item_iconWrap_hoverIcon,
+.index_download_item_title {
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+}
+
+.index_download_item {
+    height: 100%;
+    padding-top: 64px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.index_download_item:hover {
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.index_download_item:hover .index_download_item_iconWrap_normalIcon {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transform: scale(.4, .4);
+    -ms-transform: scale(.4, .4);
+    transform: scale(.4, .4);
+}
+
+.index_download_item:hover .index_download_item_iconWrap_hoverIcon {
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    -webkit-opacity: .5;
+    -moz-opacity: .5;
+    opacity: 1 !important;
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+}
+
+.index_download_item:hover .index_download_item_desc,
+.index_download_item:hover .index_download_item_title {
+    -webkit-transform: translateY(-17px);
+    -ms-transform: translateY(-17px);
+    transform: translateY(-17px);
+}
+
+.index_download_item:hover .index_download_item_desc {
+    opacity: 1;
+}
+
+.index_download_item_iconWrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.index_download_item_iconWrap_normalIcon {
+    position: relative;
+    z-index: 1;
+    vertical-align: top;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+
+.index_download_item_iconWrap_hoverIcon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transform: scale(1.333, 1.333);
+    -ms-transform: scale(1.333, 1.333);
+    transform: scale(1.333, 1.333);
+}
+
+.index_download_item_Mac.index_download_item_iconWrap_hoverIcon,
+.index_download_item_Window.index_download_item_iconWrap_hoverIcon {
+    margin-left: 11px;
+    margin-top: 15px;
+}
+
+.index_download_item_downloadIcon {
+    width: 120px;
+    height: 120px;
+    background-size: 100%;
+}
+
+.index_download_item_title {
+    margin-bottom: 4px;
+    color: #323232;
+    font-size: 17px;
+}
+
+.index_download_item_desc {
+    color: silver;
+    font-size: 16px;
+    opacity: 0;
+}
+
+.index_section {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.ww_officialImg,
+.ww_officialUserLogo {
+    display: inline-block;
+}
+
+.ww_officialImg {
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+}
+
+.index_section_SubFeature.ww_officialImg {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.ww_officialImg {
+    position: relative;
+    top: -1px;
+    left: -2px;
+}
+
+.index_section_case_anchor.ww_officialImg {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.index_log_operate_open .ww_officialImg {
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    left: -2px;
+}
+
+.index_foot_contact_item .ww_officialImg {
+    line-height: 200;
+    overflow: hidden;
+    vertical-align: middle;
+    -webkit-opacity: .8;
+    -moz-opacity: .8;
+    opacity: .8;
+    filter: alpha(opacity=80);
+}
+
+.index_foot_contact_item:hover.ww_officialImg {
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.index_case_header_title.ww_officialImg,
+.index_case_navWrap.index_case_nav_item,
+.index_registerUpgradeDlg.ww_officialImg,
+.index_registerUpgradeDlg_item {
+    vertical-align: top;
+}
+
+.index_case_cnt_caseItemDetail_close_link.ww_officialImg {
+    vertical-align: top;
+    margin-left: 2px;
+    margin-top: 1px;
+}
+
+.index_third_detail_item_nav.ww_officialImg {
+    vertical-align: 1px;
+    margin-left: 10px;
+}
+
+.ww_officialImg_DownloadMac,
+.ww_officialImg_DownloadWindows,
+.ww_officialImg_DownloadiOS {
+    width: 124px;
+    height: 121px;
+}
+
+.ww_officialImg_DownloadiOS {
+    background-image: url(/cn/libs/download/ios.png);
+    background-repeat: no-repeat;
+}
+
+
+.ww_officialImg_DownloadIcon {
+    width: 90px;
+    height: 90px;
+}
+
+.ww_officialImg_DownloadAndroid {
+    background-image: url(/cn/libs/download/android.png);
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 121px;
+}
+
+.index_download_item:hover .index_download_item_iconWrap_normalIcon {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -webkit-transform: scale(.4, .4);
+    -ms-transform: scale(.4, .4);
+    transform: scale(.4, .4);
+}
+
+.index_download_item_iconWrap_normalIcon {
+    position: relative;
+    z-index: 1;
+    vertical-align: top;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+
+
+
+.index_download_item,
+.index_download_item_desc,
+.index_download_item_iconWrap_hoverIcon,
+.index_download_item_title {
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    transition: all .4s;
+}
+
+.ww_officialImg.ww_officialImg_DownloadMac.index_download_item_iconWrap_normalIcon {
+    background-image: url(/cn/libs/download/desktop-mac.png);
+    background-position: 2px 0;
+    background-repeat: no-repeat;
+}
+
+.ww_officialImg.ww_officialImg_DownloadIcon.index_download_item_iconWrap_hoverIcon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    opacity: 0;
+    margin-left: 11px;
+    margin-top: 15px;
+    background-image: url(/cn/libs/download/download.png);
+    background-position: 20px 20px;
+    background-repeat: no-repeat;
+}
+
+.ww_officialImg.ww_officialImg_DownloadWindows.index_download_item_iconWrap_normalIcon {
+    background-image: url(/cn/libs/download/desktop-windows.png);
+    background-position: 2px 0;
+    background-repeat: no-repeat;
+}
