@@ -67,12 +67,17 @@
 			<div class="collapse navbar-collapse" id="example" >
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="/cn/about/">
+						<a href="/cn/" class="<%- current.source == 'index' ? 'active' : '' %>">
+							华炎产品
+						</a>
+					</li>
+					<li>
+						<a href="/cn/about/" class="<%- current.source == 'about' ? 'active' : '' %>">
 							关于华炎
 						</a>
 					</li>
 					<li>
-						<a href="/cn/case/">
+						<a href="/cn/case/" class="<%- current.source == 'case' ? 'active' : '' %>">
 							成功案例
 						</a>
 					</li>
@@ -148,9 +153,5 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
-		var path = "<%- current.path %>";
-		console.log(path);
-	</script>
 </body>
 </html>

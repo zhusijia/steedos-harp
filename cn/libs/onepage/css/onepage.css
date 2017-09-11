@@ -628,13 +628,13 @@ a:focus, a:active {
 }
 
 .navbar-transparent .navbar-nav > li > a:hover,
-.navbar-transparent .navbar-nav > li > a:focus {
+.navbar-transparent .navbar-nav > li > a.active{
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
 }
 
 .navbar-fixed-top.filled .navbar-nav > li > a:hover,
-.navbar-fixed-top.filled .navbar-nav > li > a:focus {
+.navbar-fixed-top.filled .navbar-nav > li > a.active{
   background-color: rgba(43,43,43,0.1);
   border-radius: 3px;
 }
@@ -651,7 +651,8 @@ a:focus, a:active {
     color: #FFFFFF !important;
   }
   .navbar-fixed-top.filled .navbar-nav > li > a:hover,
-  .navbar-fixed-top.filled .navbar-nav > li > a:focus {
+  .navbar-fixed-top.filled .navbar-nav > li > a:focus,
+  .navbar-fixed-top.filled .navbar-nav > li > a.active {
     background-color: rgba(255, 255, 255, 0.2);
   }
 }
