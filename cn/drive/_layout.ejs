@@ -68,37 +68,37 @@
             <div class="collapse navbar-collapse" id="example" >
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/cn/drive/" class="<%- current.source == 'index' ? 'active' : '' %>">
+                        <a href="/cn/drive/" class="<%- current.path[current.path.length-2] == 'drive' ? 'active' : '' %>">
                             简介
                         </a>
                     </li>
                     <li>
-                        <a href="/cn/drive/sharing" class="<%- current.source == 'sharing' ? 'active' : '' %>">
+                        <a href="/cn/drive/sharing" class="<%- current.path[current.path.length-2] == 'sharing' ? 'active' : '' %>">
                             共享
                         </a>
                     </li>
                     <li>
-                        <a href="/cn/drive/collaboration" class="<%- current.source == 'collaboration' ? 'active' : '' %>">
+                        <a href="/cn/drive/collaboration" class="<%- current.path[current.path.length-2] == 'collaboration' ? 'active' : '' %>">
                             协作
                         </a>
                     </li>
                     <li>
-                        <a href="/cn/drive/mobile" class="<%- current.source == 'mobile' ? 'active' : '' %>">
+                        <a href="/cn/drive/mobile" class="<%- current.path[current.path.length-2] == 'mobile' ? 'active' : '' %>">
                             移动
                         </a>
                     </li>
                     <li>
-                        <a href="/cn/drive/backup" class="<%- current.source == 'backup' ? 'active' : '' %>">
+                        <a href="/cn/drive/backup" class="<%- current.path[current.path.length-2] == 'backup' ? 'active' : '' %>">
                             同步
                         </a>
                     </li>
                     <li>
-                        <a href="/cn/drive/security" class="<%- current.source == 'security' ? 'active' : '' %>">
+                        <a href="/cn/drive/security" class="<%- current.path[current.path.length-2] == 'security' ? 'active' : '' %>">
                             控制
                         </a>
                     </li>
                     <li>
-                        <a href="/cn/drive/download/" class="<%- current.source == 'download' ? 'active' : '' %>">
+                        <a href="/cn/drive/download/" class="<%- current.path[current.path.length-2] == 'download' ? 'active' : '' %>">
                             下载
                         </a>
                     </li>

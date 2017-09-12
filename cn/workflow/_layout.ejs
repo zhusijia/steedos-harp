@@ -68,22 +68,22 @@
             <div class="collapse navbar-collapse" id="example" >
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/cn/workflow/" class="<%- current.source == 'index' ? 'active' : '' %>">
+                        <a href="/cn/workflow/" class="<%- current.path[current.path.length-2] == 'workflow' ? 'active' : '' %>">
                             简介
                         </a>
                     </li>
                     <li>
-                        <a href="/cn/workflow/casestudy" class="<%- current.source == 'casestudy' ? 'active' : '' %>">
+                        <a href="/cn/workflow/casestudy" class="<%- current.path[current.path.length-2] == 'casestudy' ? 'active' : '' %>">
                             案例
                         </a>
                     </li>
                     <li>
-                        <a href="/cn/workflow/pricing/" class="<%- current.source == 'pricing' ? 'active' : '' %>">
+                        <a href="/cn/workflow/pricing/" class="<%- current.path[current.path.length-2] == 'pricing' ? 'active' : '' %>">
                             报价
                         </a>
                     </li>
                     <li>
-                        <a href="/cn/workflow/download/" class="<%- current.source == 'download' ? 'active' : '' %>">
+                        <a href="/cn/workflow/download/" class="<%- current.path[current.path.length-2] == 'download' ? 'active' : '' %>">
                             下载
                         </a>
                     </li>

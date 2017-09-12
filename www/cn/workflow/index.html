@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="/cn/libs/img/icon_blue.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <title>审批王 - 在线BPM业务流程管理软件，托管型OA办公自动化系统，免费OA解决方案 - 华炎办公</title>
+    <meta name="description" content="审批王是全新的企业级在线审批系统，可以快速的将公司的各类审批业务转换为可严格执行的电子流程。常见的审批业务包括：出差申请、差旅报销、请假销假、物品采购、付款申请、固定资产报废、会议室预约、退库管理、客服投诉、工作报告等均可通过审批王处理。" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" type="text/css" href="/cn/libs/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/cn/libs/onepage/css/onepage.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/cn/libs/ionicons/css/ionicons.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/cn/workflow/css/workflow.css">
+
+    <script src="/cn/libs/jquery/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="/cn/libs/jquery/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+    <script src="/cn/libs/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="/cn/libs/onepage/js/onepage.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if(window.screen.width <= 767) {
+                $(".telephone").attr("href","tel:4008201612");
+            }
+            function toggleNavbar() {
+                var offsetTop = $(".navbar.navbar-fixed-top").offset().top;
+                if (offsetTop > 0) {
+                    $(".navbar.navbar-fixed-top").removeClass("navbar-transparent");
+                    $(".navbar.navbar-fixed-top").addClass("filled")
+                } else {
+                    $(".navbar.navbar-fixed-top").addClass("navbar-transparent");
+                    $(".navbar.navbar-fixed-top").removeClass("filled")
+                }
+            }
+            toggleNavbar();
+            $(window).on("scroll", function() {
+                toggleNavbar();
+            })
+        })
+    </script>
+</head>
+<body class="landing-page steedos-workflow">
+    <nav class="navbar navbar-transparent navbar-top navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar bar1"></span>
+                    <span class="icon-bar bar2"></span>
+                    <span class="icon-bar bar3"></span>
+                </button>
+                <div style="display: inline-block;">
+                    <div class="logo-container">
+                        <a href="/cn/" class="logo">
+                            <img src="/cn/libs/img/logo.png">
+                        </a>
+                        <div class="brand">
+                            审批王
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="example" >
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/cn/workflow/" class="active">
+                            简介
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/workflow/casestudy" class="">
+                            案例
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/workflow/pricing/" class="">
+                            报价
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/workflow/download/" class="">
+                            下载
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/workflow/help/" target="_blank">
+                            帮助
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/steedos/sign-up" target="_blank">
+                            注册
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/steedos/sign-in">
+                            登录
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <div class="wrapper">
+
+        <!-- index.ejs -->
+        <div class="parallax filter-gradient gray" data-color="gray">
+    <div class="parallax-background">
+        <img class="parallax-background-image" src="/cn/libs/img/banner/learning_begin_large.jpg">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="description">
+                <h2>
+                    有了审批王，全世界都是你的办公室！
+                </h2>
+                <br>
+                <h5>
+                    审批王是全新的企业级在线审批系统，可以快速的将公司的各类审批业务转换为可严格执行的电子流程。
+                </h5>
+            </div>
+            <div class="buttons">
+                <a href="/steedos/sign-up/" target="_blank" class="btn btn-simple btn-round btn-white btn-lg btn-login" target="_blank">注册试用</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section section-features workflow-feature">
+    <div class="container" style="margin-top: 50px;margin-bottom: 50px">
+        <div class="col-md-12 text-center">
+            <img src="/cn/libs/img/workflow/int.png" style="width: 75%;margin-bottom: 30px">
+        </div>
+        <h4 class="header-text text-center header-introduction">审批王可以定制任何您想要的管理流程</h4>
+        <p class="text-center description">
+            有了审批王，随时可以处理您的业务流程：出差、报销、请假、采购、 付款、订单、客服、会议、公文、投诉、报告...
+        </p>
+        <div class="container">
+            <hr style="margin-bottom: 0">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="ion ion-ios-shuffle"></i>
+                        </div>
+                        <div class="text">
+                            <h4>规范业务过程</h4>
+                            <p>审批王帮助您将各项规章制度转化为可严格执行的电子流程。避免工作人员办事随心所欲。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="ion ion-ios-pie-outline"></i>
+                        </div>
+                        <div class="text">
+                            <h4>减少出错机会</h4>
+                            <p>每月月底通过程序自动计算汇总生成报表，避免人工计算、誊抄等环节中的错误。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="ion ion-ios-clock-outline"></i>
+                        </div>
+                        <div class="text">
+                            <h4>提升工作效率</h4>
+                            <p>像微信一样即时通知，领导打开手机就能处理，大幅提升业务流程运行效率。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="ion ion-ios-search"></i>
+                        </div>
+                        <div class="text">
+                            <h4>记录随时可查</h4>
+                            <p>审批王永久保存您的申请单，您可以像百度一样随时调阅已审批的记录，资料不再遗失。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="ion ion-ios-chatbubble-outline"></i>
+                        </div>
+                        <div class="text">
+                            <h4>降低沟通成本</h4>
+                            <p>有了审批王，员工不再到处找领导各种签字，帮您大幅节省纸张、传真、电话、沟通、查询等各种成本。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="icon">
+                            <i class="ion ion-ios-paw-outline"></i>
+                        </div>
+                        <div class="text">
+                            <h4>随时随地访问</h4>
+                            <p>有了审批王，打开手机就可以处理和查询业务流程，全世界都是你的办公室。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <h4 class="header-text text-center">成功案例</h4>
+                <p class="text-center">
+                    超过200家公司成功实施审批王流程管理解决方案
+                </p>
+                <div class="col-md-4 col-md-offset-1 text-center success-example">
+                    <p>
+                        审批王最大的特色就是流程自定义非常方便，即使业务部门提出各种复杂需求，都能轻松的用审批王实现。
+                    </p>
+                    <small>
+                        <i class="ion-ios-minus-empty"></i>上海财经大学信息部，袁林
+                    </small>
+                </div>
+                <div class="col-md-4 col-md-offset-2 text-center success-example">
+                    <p>
+                        审批王用户界面很漂亮，而且操作流程非常友好，我们的员工基本不需要培训，拿到就会用了。
+                    </p>
+                    <small>
+                        <i class="ion-ios-minus-empty"></i>上海大众交通集团, 吴永隽
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section section-no-padding">
+    <div class="parallax filter-gradient blue" data-color="blue">
+        <div class="parallax-background">
+            <img class="parallax-background-image" src="/cn/libs/img/meeting/bg3.jpg">
+        </div>
+        <div class="info">
+            <h1>立即免费试用审批王！</h1>
+            <a href="/steedos/sign-up/" target="_blank" class="btn btn-neutral btn-lg btn-fill">注册试用</a>
+        </div>
+    </div>
+</div>
+<div class="section section-features workflow-feature">
+    <div class="container" style="margin-top: 50px">
+        <div class="row workflow-help">
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="icon" href="/cn/workflow/help/mp4.html" target="_blank">
+                        <i class="ion ion-ios-film-outline"></i>
+                    </a>
+                    <div class="text">
+                        <h4>培训视频</h4>
+                        <p class="text-muted">您只需花上30分钟，跟着操作一下，就能成为业务流程定制专家。</p>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-fill btn-neutral btn-help" href="/cn/workflow/help/mp4.html" target="_blank">查看培训视频</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="icon" href="/cn/workflow/pricing">
+                        <i class="ion ion-ios-paper-outline"></i>
+                    </a>
+                    <div class="text">
+                        <h4>版本与报价</h4>
+                        <p class="text-muted">审批王根据您的企业规模，提供不同版本的报价，快来看看哪一个版本适合您。</p>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-fill btn-neutral btn-help" href="/cn/workflow/pricing">选择适合我的版本</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="icon" href="/cn/workflow/download">
+                        <i class="ion ion-ios-cloud-download-outline"></i>
+                    </a>
+                    <div class="text">
+                        <h4>下载客户端</h4>
+                        <p class="text-muted">审批王为您提供iPhone、iPad、Android、Windows、Mac客户端。</p>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-fill btn-neutral btn-help" href="/cn/workflow/download">下载客户端</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="icon" href="/cn/workflow/help/api.html" target="_blank">
+                        <i class="ion ion-ios-loop"></i>
+                    </a>
+                    <div class="text">
+                        <h4>开放API</h4>
+                        <p class="text-muted">审批王为专业版以上客户完全开放API访问，让您可以轻松将审批王整合进您的现有项目。</p>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-fill btn-neutral btn-help" href="/cn/workflow/help/api.html" target="_blank">查看API说明</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <a class="icon" href="/cn/workflow/help" target="_blank">
+                        <i class="ion ion-ios-help-outline"></i>
+                    </a>
+                    <div class="text">
+                        <h4>帮助中心</h4>
+                        <p class="text-muted">在使用过程中遇到问题了吗？快来这里看看吧，或许您可以找到答案。</p>
+                    </div>
+                    <div class="buttons">
+                        <a class="btn btn-fill btn-neutral btn-help" href="/cn/workflow/help" target="_blank">查看帮助中心</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="icon">
+                        <i class="ion ion-ios-email-outline"></i>
+                    </div>
+                    <div class="text">
+                        <h4>流程实施服务</h4>
+                        <p class="text-muted">审批王为您提供流程实施服务，您只需将业务流程需求发邮件到： support@steedos.com。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- footer -->
+        <div class="footer">
+            <div class="overlayer">
+                <div class="container">
+                    <div class="row support">
+                        <div class="col-sm-4 col-xs-4">
+                            <h4>联系我们</h4>
+                            <ul class="list-unstyled">
+                                <li> <a class="telephone">热线：400-820-1612</a></li>
+                                <li> <a>邮箱：support@steedos.com</a></li>
+                                <li> <a>QQ：1471093381</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                            <h4>下载客户端</h4>
+                            <ul class="list-unstyled">
+                                <li> <a href="http://itunes.apple.com/cn/app/steedos-workflow/id686408407" target="_blank">iPhone / iPad</a> </li>
+                                <li> <a href="http://oss.steedos.com/apps/workflow/android/workflow.apk" target="_blank">Android</a> </li>
+                                <li> <a href="http://oss.steedos.com/apps/steedos/windows/steedos-desktop.exe" target="_blank">Windows</a> </li>
+                                <li> <a href="http://oss.steedos.com/apps/steedos/mac/steedos.dmg" target="_blank">Mac</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                            <h4>关于审批王</h4>
+                            <div class="footer-description">
+                                <span>
+                                    审批王是全新的企业级在线审批系统，可以快速的将公司的各类审批业务转换为可严格执行的电子流程。出差申请、差旅报销、请假销假、物品采购、付款申请、固定资产报废、会议室预约、退库管理、客服投诉、工作报告等均可通过审批王处理。
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="social-area text-center" itemscope="" itemtype="">
+                            <a itemprop="url" href="/cn/" class="footer-brand">
+                                <div class="logo">
+                                    <img itemprop="logo" src="/cn/libs/img/logo.png">
+                                </div>
+                                <span itemprop="name">华炎办公</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="credits">
+                            © 华炎软件. 保留所有权利.
+                            <a class="steedos-rule" href="/cn/terms/" target="_blank">条款与规定</a>
+                            <a class="steedos-rule" href="/cn/privacy/" target="_blank">隐私保护</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
