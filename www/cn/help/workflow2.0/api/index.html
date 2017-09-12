@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>华炎云帮助中心 - API</title>
+  <link rel="shortcut icon" href="/website/img/workflow/AppIcon76x76.png" />
+  <meta name="Description" content="华炎云是深受公司员工喜爱的云端的企业管理软件，帮助您的团队随时随地的沟通与协作。它的设置、使用和管理都很简单，可让您更明智地工作并专注于核心业务。">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+            
+  <link href="/website/static/lib/fontawesome/css/font-awesome.css" rel="stylesheet"/>
+
+  <script src="/website/libs/jquery.min.js" type="text/javascript"></script>
+  <script src="/website/js/generated_toc.js" type="text/javascript"></script>
+            
+  <link href="/website/libs/semantic.css" rel="stylesheet"/>
+  <script src="/website/libs/semantic.js" type="text/javascript"></script>
+
+  <script type="text/javascript" src="/website/js/scrolltopcontrol.js"></script>
+  <link href="/website/libs/spacelab.min.css" rel="stylesheet"/>
+  <link href="/website/libs/spacelab.fix.css" rel="stylesheet"/>
+  <link href="/website/css/odoo/website.css" id="website_css" rel="stylesheet"/>
+  <link href="/website/css/steedos.css" id="steedos_css" rel="stylesheet"/>
+  
+  <script>
+
+  var regExp = {
+    ios          : /(iPad|iPhone|iPod)/g,
+    mobileChrome : /(CriOS)/g,
+    mobile       : /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/g
+  }
+
+  window.agent = {}
+  window.agent.isMobile = navigator.userAgent.match(regExp.mobile)
+
+  $(document)
+    .ready(function() {
+      $('.ui.menu .ui.dropdown').dropdown({
+        on: 'hover'
+      });
+      $('.ui.menu a.item')
+        .on('click', function() {
+          $(this)
+            .addClass('active')
+            .siblings()
+            .removeClass('active');
+      });
+      if (window.agent.isMobile){
+
+      }
+
+    });
+  </script>
+</head>
+<body>
+<div class="ui top secondary pointing menu" id="navbar" style="height: 44px;border-bottom: 1px solid #DDDDDD; background-color: #F3F3F3">
+  
+  <div class="ui dropdown item">
+    帮助中心 <i class="dropdown icon"></i>
+    <div class="ui menu">
+        <a class="item" href="/cn/help/workflow3.0/" target="_blank">审批王</a>
+        <a class="item" href="/cn/help/chat/">享聊</a>
+        <a class="item" href="/cn/help/drive/">云盘</a>
+    </div>
+  </div>
+  <div class="right menu">
+    <!-- <a class="item" href="http://chat.steedos.com/channel/steedos-support" target="_blank">联系我们</a> -->
+  </div>
+  
+</div>
+
+<div class="ui " style="margin: 20px; min-height: 100%;">
+    <div class="ui breadcrumb">
+  <a class="section" href="/cn/help/workflow">审批王</a>
+  <i class="right angle icon divider"></i>
+  <span class="section">API</span>
+</div>
+
+  <h1>审批王API</h1>
+
+  <h2>API Authentication</h2>
+  <div id="slow">
+    <p>The SteedOS API uses OAuth 2 to allow you to authenticate as a user. Each API request must pass an access token to authenticate correctly. If the token is not provided or invalid you will receive a 401 response.</p>
+  </div>
+  <h2>Wire format</h2>
+  <div id="fast">
+    <p>You have the choice of providing your access token either as the 'auth_token' query parameter or in the Authorization HTTP request header.</p>
+    <p>For example, if your token were 'abc123', passing the token in as a query parameter in a request would look like:</p>
+    <pre><code>GET /uf/retrieve?auth_token=abc123&instance_id={instance_id} HTTP/1.1
+    Host: uuflowws.steedos.com</pre></code>
+
+    <p></p>
+    <p>Which would generate the response:</p>
+    <pre><code>HTTP/1.1 200 OK
+      Date: Wed, 11 Sep 2013 21:55:00 GMT
+      Content-Type: application/json
+      Transfer-Encoding: chunked
+      Connection: keep-alive
+      Access-Control-Allow-Origin: *</pre></code>
+    <p></p>
+    <pre><code>{...}</pre></code>
+
+    <p></p>
+    <p>If you wanted to not expose your access token in server logs, you could choose to use theAuthorization HTTP header:</p>
+    <pre><code>GET /uf/retrieve?instance_id={instance_id} HTTP/1.1
+      Authorization: Jack abc123
+      Host: uuflowws.steedos.com</pre></code>
+  </div>
+  <h2>涉及对象</h2>
+  <p>“申请单”对象即Instance Object，格式如下：</p>
+  <pre><code>{
+    id: {string}, /* 申请单的instanceID
+    space: {string},
+    flow: {string},
+    flow_version: {string},
+    form: {string},
+    form_version: {string}, 
+    name: {string},
+    submitter: {string},
+    submitter_name: {string}, /* 提交者的姓名
+    applicant: {string},
+    applicant_name: {string}, /* 申请者的姓名
+    applicant_organization: {string},
+    applicant_organization_name: {string}, /* 申请者所在部门
+    applicant_organization_fullname: {string}, /* 申请者所在部门(全路径)
+    submit_date: {time},      /* 提交时间
+    state: {string},
+    final_decision: {string},
+    code: {string},
+    is_archived: {boolean},
+    is_deleted: {boolean},
+    values: { /* 其下为申请单的表单详情，含字段及其值、子表字段及其值
+        field_name_1: field_value_1,
+        field_name_2: field_value_2,
+        field_name_3: field_value_3,
+    },
+    modified: {time},
+    modified_by: {string},
+    created: {time},
+    created_by: {string},
+    traces: [{  /* 其下为签核历程
+        id: {string},
+        instance: {string},
+        previous_trace_ids: [ {string} ],
+        type: {string},
+        is_finished: {boolean},   /* 是否已完成
+        step: {string},
+        start_date: {time},
+        finish_date: {time},
+        due_date: {time},
+        judge: {string},    /* 核准/驳回/提交
+        approves: [{    /* 以下为处理人的提交信息
+            id: {string},
+            instance: {string},
+            trace: {string},
+            is_finished: {boolean},    /* 是否已完成
+            user: {string},
+            user_name: {string},
+            handler: {string},
+            handler_name: {string},
+            handler_organization: {string},
+            handler_organization_name: {string},
+            handler_organization_fullname: {string},
+            from_user: {string},
+            from_user_name: {string},
+            type: {string},
+            start_date: {time},
+            finish_date: {time},
+            due_date: {time},
+            read_date: {time},
+            judge: {string},     /* 核准/驳回/提交
+            is_read: {boolean},  /* 是否已读
+            description: {string},
+            values: {    /* 此处理人修改后的表单信息
+                field_name_1: field_value_1,
+                field_name_2: field_value_2,
+                field_name_3: field_value_3, 
+            },
+            next_steps: [{    /*此处理人选择的下一步骤及其处理人
+                step: {string}, 
+                users: [ {string}]
+            }],
+            is_error: {boolean},
+            error_msg: {string},
+        }]     
+    }]
+}
+</code></pre>
+
+
+
+<br>
+<h2>新建申请单</h2>
+<p>目标<p>
+<p>创建某申请单，同时传入某些字段值和子表字段值。</p>
+<br>
+<p>HTTP Request<p>
+<pre><code>POST https://uuflowws.steedos.com/api/drafts?auth_token=***</code></pre>
+
+<br>
+<p>HTTP Request Body<p>
+<pre><code>{
+    "space_name": {string},  /* 工作区名称
+    "form_name": {string},  /* 表单名称
+    "flow_name": {string},  /* 流程名称
+    "applicant_email": {string},    /* 提交者的Email
+    "values": {  /* 传入的表单详情。注意一定要与实际表单匹配！如果传入表单的字段名称、字段值有误，因为接口所在的服务器端程序无法校验数据完整与格式类型，将会导致表单显示异常。
+        "field_name_1": field_value_1,  /*字段1的名称：字段1的值
+        "field_name_2": field_value_2,  /*字段2的名称：字段1的值
+        "field_name_3": field_value_3,  /*字段3的名称：字段1的值
+        "subtable_name_1":[{
+            "subfield_name_1": subfield_value_1.1,/*子表字段1的名称：值
+            "subfield_name_2": subfield_value_2.1,/*子表字段2的名称：值
+            "subfield_name_3": subfield_value_3.1 /*子表字段3的名称：值
+        },
+        {
+            "subfield_name_1": subfield_value_1.2,/*子表字段1的名称：值
+            "subfield_name_2": subfield_value_2.2,/*子表字段2的名称：值
+            "subfield_name_3": subfield_value_3.2 /*子表字段3的名称：值
+        },
+        {
+            "subfield_name_1": subfield_value_1.3,/*子表字段1的名称：值
+            "subfield_name_2": subfield_value_2.3,/*子表字段2的名称：值
+            "subfield_name_3": subfield_value_3.3 /*子表字段3的名称：值
+        }]
+    }
+}
+</code></pre>
+<p>样例：</p>
+<pre><code>{
+    "space_name":"某公司",     /* 工作区名称
+    "form_name":"日常费用报销",   /* 表单名称
+    "flow_name":"日常费用报销",   /* 流程名称
+    "applicant_email": "user@company.com",  /* 提交者的Email
+    "values": {     /* 以下为表单的内容。注意一定要与实际表单匹配！如果传入表单的字段名称、字段值有误，因为接口所在的服务器端程序无法校验数据完整与格式类型，将会导致表单显示异常。
+        "报销明细":[{   /* 子表第1条纪录
+            "费用类别":"市内交通费",
+            "报销金额":"100.00",
+            "费用产生日期":"2015-10-11",
+            "备注":"某项目"
+        },
+        {       /* 子表第2条纪录
+            "费用类别":"市内交通费",
+            "报销金额":"50.00",
+            "费用产生日期":"2015-10-20",
+            "备注":"某项目"
+        }],
+        "报销金额合计":150
+    }
+}
+</code></pre>
+
+<br>
+<p>HTTP Response Body</p>
+<p>成功：Instance Object</p>
+<p>样例：</p>
+<pre><code>{
+    "applicant": "5125gs128e296a4ba0000001",
+    "applicant_name": "某某", /* 申请者的姓名
+    "applicant_organization": "544da71d123abc6cd0000019",
+    "applicant_organization_fullname": "某公司/采购部",
+    "applicant_organization_name": "采购部",   /* 申请者所在部门
+    "attachments": [],
+    "code": "",
+    "created": "2015-11-23T06:32:41.318Z",
+    "created_by": "5199da558e296a4ba0000001",
+    "flow": "7d4eba0c-8192-4bbc-8c46-27afe12345ef",
+    "flow_version": "577c7ae2-a813-45f6-8c32-ef63e123e0b8",
+    "form": "8567d57d-de5b-4fae-8e6a-123de62d43c8",
+    "form_version": "544da71d527eca6cd1234020",
+    "id": "5652b3098e296a1234000089",
+    "inbox_users": [],
+    "is_archived": false,
+    "is_deleted": false,
+    "modified": "2015-11-23T06:32:41.319Z",
+    "modified_by": "5199da558e123a4ba0000001",
+    "name": "日常费用报销",
+    "outbox_users": [],
+    "space": "544da71d123eca6cd0000017",
+    "state": "draft",
+    "submitter": "5199da123e296a4ba0000001",
+    "submitter_name": "某某",
+    "traces": [  /* 以下为签核历程
+        {        /* 以下为签核历程的第1条纪录，即第一步   
+            "approves": [
+                {    /* 以下为第一步的第一个处理人（会签节点可有多个处理人，则approves下有多条纪录）的提交信息
+                    "handler": "5199da123e296a4ba0000001",
+                    "handler_name": "某某",
+                    "handler_organization": "544da71d123eca6cd0000019",
+                    "handler_organization_fullname": "某公司/采购部",
+                    "handler_organization_name": "采购部",
+                    "id": "5652b3123e296a084800008b",
+                    "instance": "5652b1238e296a0848000089",
+                    "is_error": false,
+                    "is_finished": false,
+                    "is_read": true,
+                    "next_steps": [],
+                    "read_date": "2015-11-23T06:32:41.320Z",
+                    "start_date": "2015-11-23T06:32:41.320Z",
+                    "trace": "5652b1238e296a084800008a",
+                    "type": "draft",
+                    "user": "5199da123e296a4ba0000001",
+                    "user_name": "某某",
+                    "values": {
+                        "报销明细": [{
+                            "费用类别": "市内交通费",
+                            "报销金额": "100.00",
+                            "费用产生日期": "2015-10-11",
+                            "备注": "某项目"
+                        },
+                        {
+                            "费用类别": "市内交通费",
+                            "报销金额": "50.00",
+                            "费用产生日期": "2015-10-20",
+                            "备注": "某项目"
+                        }],
+                        "报销金额合计": 150
+                    }
+                }
+            ],
+            "id": "5652b3098e123a084800008a",
+            "instance": "5652b3123e296a0848000089",
+            "is_finished": false,
+            "previous_trace_ids": [],
+            "start_date": "2015-11-23T06:32:41.320Z",
+            "step": "73780A0A-572B-45B2-B386-FAC84A7F1231"
+        }
+    ]
+}
+</code></pre>
+<p>失败：</p>
+<pre><code>{
+    "errors": [{
+        "errorCode": {number},  /*错误代码
+        "errorMessage": {string}    /*错误信息
+    },
+    {
+        "errorCode": {number},  /*错误代码
+        "errorMessage": {string}    /*错误信息
+    }]
+}
+</code></pre>
+<p>样例：</p>
+<pre><code>{
+    "errors": [{
+        "errorCode": 500,
+        "errorMessage": "unexpected comma at line 2, column 31 [parse.c:575]"
+    }]
+}
+</code></pre>
+
+<br>
+<h2>提交申请单</h2>
+<p>目标</p>
+<p>提交某申请单，同时指定下一步骤及其处理人。</p>
+<p>HTTP Request<p>
+<pre><code>POST https://uuflowws.steedos.com/api/submit?auth_token=***</code></pre>
+
+<br>
+<p>HTTP Request Body</p>
+<pre><code>{
+    "nextstep_name": {string},  /* 下一步骤的名称
+    "nextstepuser_email": [{string},{string}]/* 下一步骤处理人(如果下一步骤为会签节点，则可多个)的Email
+    "instance" ：{ Instance Object }
+}
+</code></pre>
+<p>样例:</p>
+<pre><code>{
+    "nextstep_name": "部门经理审批",  /* 下一步骤的名称
+    "nextstepuser_email": ["***@***.com"],/* 下一步骤处理人(如果下一步骤为会签节点，则可多个)的Email
+    "instance": /* 其下为申请单的详情
+    {
+        "applicant": "5199da123e296a4ba0000001",
+        "applicant_name": "某某",
+        "applicant_organization": "544da71d123eca6cd0000019",
+        "applicant_organization_fullname": "某公司/采购部",
+        "applicant_organization_name": "采购部",
+        "attachments": [],
+        "code": "",
+        "created": "2015-11-23T06:32:41.318Z",
+        "created_by": "5199da123e296a4ba0000001",
+        "flow": "7d4eba0c-8192-4bbc-8c46-27afe12395ef",
+        "flow_version": "577c7ae2-a813-45f6-8c32-ef63e123e0b8",
+        "form": "8567d57d-de5b-4fae-8e6a-123de62d43c8",
+        "form_version": "544da71d123eca6cd0000020",
+        "id": "5652b3123e296a0848000089",
+        "inbox_users": [],
+        "is_archived": false,
+        "is_deleted": false,
+        "modified": "2015-11-23T06:32:41.319Z",
+        "modified_by": "5199da123e296a4ba0000001",
+        "name": "日常费用报销",
+        "outbox_users": [],
+        "space": "544da71d123eca6cd0000017",
+        "state": "draft",
+        "submitter": "5199da123e296a4ba0000001",
+        "submitter_name": "某某",
+        "traces": [  /* 以下为签核历程
+            {     /* 以下为签核历程的第1条纪录，即第一步
+                "approves": [
+                    {    /* 以下为第一步的第一个处理人（会签节点可有多个处理人，则approves下有多条纪录）的提交信息
+                        "handler": "5199da123e296a4ba0000001",
+                        "handler_name": "某某",
+                        "handler_organization": "544da71d123eca6cd0000019",
+                        "handler_organization_fullname": "某公司/采购部",
+                        "handler_organization_name": "采购部",
+                        "id": "5652b3098e296a123400008b",
+                        "instance": "5652b3098e123a0848000089",
+                        "is_error": false,
+                        "is_finished": false,
+                        "is_read": true,
+                        "next_steps": [],
+                        "read_date": "2015-11-23T06:32:41.320Z",
+                        "start_date": "2015-11-23T06:32:41.320Z",
+                        "trace": "5652b3123e296a084800008a",
+                        "type": "draft",
+                        "user": "5199da558e123a4ba0000001",
+                        "user_name": "某某",
+                        "values": {
+                            "报销明细": [{
+                                "费用类别": "市内交通费",
+                                "报销金额": "100.00",
+                                "费用产生日期": "2015-10-11",
+                                "备注": "某项目"
+                            },
+                            {
+                                "费用类别": "市内交通费",
+                                "报销金额": "50.00",
+                                "费用产生日期": "2015-10-20",
+                                "备注": "某项目"
+                            }],
+                            "报销金额合计": 150
+                        }
+                    }
+                ],
+                "id": "1234b3098e296a084800008a",
+                "instance": "5652b1234e296a0848000089",
+                "is_finished": false,
+                "previous_trace_ids": [],
+                "start_date": "2015-11-23T06:32:41.320Z",
+                "step": "12380A0A-572B-45B2-B386-FAC84A7F55B1"
+            }
+        ]
+    }
+}
+</code></pre>
+
+<br>
+<p>HTTP Response Body</p>
+<p>成功：Instance Object</p>
+<p>样例：</p>
+<pre><code>{
+    "applicant": "5199da558e123a4ba0000001",
+    "applicant_name": "某某",
+    "applicant_organization": "544da71d123eca6cd0000019",
+    "applicant_organization_fullname": "某公司/采购部",
+    "applicant_organization_name": "采购部",
+    "attachments": [],
+    "code": "2",
+    "created": "2015-11-23T06:32:41.318Z",
+    "created_by": "5199da558e123a4ba0000001",
+    "flow": "7d4eba0c-1232-4bbc-8c46-27afe31495ef",
+    "flow_version": "577c7ae2-a813-45f6-8c32-ef63e123e0b8",
+    "form": "8567d57d-de5b-4fae-8e6a-123de62d43c8",
+    "form_version": "544da71d123eca6cd0000020",
+    "id": "5652b3098e123a0848000089",
+    "inbox_users": [
+        "5199da558e123a4ba0000001"
+    ],
+    "is_archived": false,
+    "is_deleted": false,
+    "modified": "2015-11-23T08:08:57.118Z",
+    "modified_by": "5199da123e296a4ba0000001",
+    "name": "日常费用报销 2",
+    "outbox_users": [],
+    "space": "544da71d123eca6cd0000017",
+    "state": "pending",
+    "submit_date": "2015-11-23T08:08:57.118Z",
+    "submitter": "5199da123e296a4ba0000001",
+    "submitter_name": "某某",
+    "traces": [ /* 以下为签核历程
+        {   /* 以下为签核历程的第1条纪录，即第一步
+            "approves": [
+                {   /* 以下为第一步的第一个处理人（会签节点可有多个处理人，则approves下有多条纪录）的提交信息
+                    "finish_date": "2015-11-23T08:08:57.115Z",
+                    "handler": "5199da123e296a4ba0000001",
+                    "handler_name": "某某",
+                    "handler_organization": "544da71d123eca6cd0000019",
+                    "handler_organization_fullname": "某公司/采购部",
+                    "handler_organization_name": "采购部",
+                    "id": "5652b3098e123a084800008b",
+                    "instance": "5652b3098e123a0848000089",
+                    "is_error": false,
+                    "is_finished": true,    
+                    "is_read": true, 
+                    "judge": "submitted",   /* submitted:提交；approved:核准；rejected:驳回
+                    "next_steps": [ /*此步此处理人选择的下一步骤及其处理人
+                        {
+                            "step": "5d71234c-a383-4bb4-abb1-2be29ba6f12d",
+                            "users": [
+                                "5199da558e123a4ba0000001"
+                            ]
+                        }
+                    ],
+                    "read_date": "2015-11-23T06:32:41.320Z",
+                    "start_date": "2015-11-23T06:32:41.320Z",
+                    "trace": "5652b3098e123a084800008a",
+                    "type": "draft",
+                    "user": "5199da558e123a4ba0000001",
+                    "user_name": "某某",
+                    "values": { /* 此步此处理人修改后的表单信息
+                        "报销明细": [
+                            {
+                            "费用类别": "市内交通费",
+                            "报销金额": "100.00",
+                            "费用产生日期": "2015-10-11",
+                            "备注": "某项目"
+                            },
+                            {
+                            "费用类别": "市内交通费",
+                            "报销金额": "50.00",
+                            "费用产生日期": "2015-10-20",
+                            "备注": "某项目"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "finish_date": "2015-11-23T08:08:57.115Z",
+            "id": "5652b3098e123a084800008a",
+            "instance": "5652b3098e123a0848000089",
+            "is_finished": true,    /* true表示本步骤已完成
+            "judge": "submitted",/* submitted:提交；approved:核准；rejected:驳回
+            "previous_trace_ids": [],
+            "start_date": "2015-11-23T06:32:41.320Z",
+            "step": "73123A0A-572B-45B2-B386-FAC84A7F55B1"
+        },
+        {   /* 以下为签核历程的第2条纪录，即第二步
+            "approves": [       /* 以下为第二步的第一个处理人（会签节点可有多个处理人，则approves下有多条纪录）的提交信息
+                {
+                    "due_date": "2015-11-30T08:08:57.116Z",
+                    "handler": "5199da558e123a4ba0000001",
+                    "handler_name": "某某",
+                    "handler_organization": "544da71d123eca6cd0000019",
+                    "handler_organization_fullname": "某公司/采购部",
+                    "handler_organization_name": "采购部",
+                    "id": "5652c9998e123a084800008e",
+                    "instance": "5652b3098e123a0848000089",
+                    "is_error": false,
+                    "is_finished": false,
+                    "is_read": false,
+                    "next_steps": [],
+                    "start_date": "2015-11-23T08:08:57.117Z",
+                    "trace": "5652c9998e123a084800008d",
+                    "user": "5199da558e123a4ba0000001",
+                    "user_name": "某某"
+                }
+            ],
+            "due_date": "2015-11-30T08:08:57.116Z",
+            "id": "5652c9998e123a084800008d",
+            "instance": "5652b3098e123a0848000089",
+            "is_finished": false,   /* false表示本步骤尚未完成，即当前步骤
+            "previous_trace_ids": [ /* 前一步骤
+                "5652b3098e123a084800008a"
+            ],
+            "start_date": "2015-11-23T08:08:57.115Z",
+            "step": "5d71234c-a383-4bb4-abb1-2be12ba6f12d"
+        }
+    ],
+    "values": { /* 当前的表单信息
+        "报销明细": [
+            {
+                "费用类别": "市内交通费",
+                "报销金额": "100.00",
+                "费用产生日期": "2015-10-11",
+                "备注": "某项目"
+            },
+            {
+                "费用类别": "市内交通费",
+                "报销金额": "50.00",
+                "费用产生日期": "2015-10-20",
+                "备注": "某项目"
+            }
+        ],
+        "报销金额合计": 150
+    }
+}
+</code></pre>    
+<p>失败：</p>
+<pre><code>{
+    "errors": [
+        {
+            "errorCode": {number},  /*错误代码
+            "errorMessage": {string}    /*错误信息
+        },
+        {
+            "errorCode": {number},  /*错误代码
+            "errorMessage": {string}    /*错误信息
+        }
+    ]
+}
+</code></pre>
+<p>样例：</p>
+<pre><code>{
+    "errors": [
+        {
+            "errorCode": 500,
+            "errorMessage": "不能指定多个处理人"
+        }
+    ]
+}
+</code></pre>
+
+
+<br>
+<h2>查看申请单详情</h2>
+<p>目标<p>
+<p>取得某申请单详细信息，包括表单、附件、签核历程等。</p>
+<br>
+<p>HTTP Request<p>
+<pre><code>Get https://uuflowws.steedos.com/api/instance/?instanceid=***&auth_token=***</code></pre>
+
+<br>
+<p>HTTP Request Body<p>
+<pre><code>{Instance_object}</code></pre>
+
+<br>
+<p>HTTP Response Body<p>
+<p>成功：Instance Object</p>
+<p>样例</p>
+<pre><code>{
+    "applicant": "5199da558e123a4ba0000001",
+    "applicant_name": "某某",
+    "applicant_organization": "544da71d123eca6cd0000019",
+    "applicant_organization_fullname": "某公司/采购部",
+    "applicant_organization_name": "采购部",
+    "attachments": [],
+    "code": "2",
+    "created": "2015-11-23T06:32:41.318Z",
+    "created_by": "5199da558e123a4ba0000001",
+    "flow": "7d4eba0c-1232-4bbc-8c46-27afe31495ef",
+    "flow_version": "577c7ae2-a813-45f6-8c32-ef63e123e0b8",
+    "form": "8567d57d-de5b-4fae-8e6a-123de62d43c8",
+    "form_version": "544da71d123eca6cd0000020",
+    "id": "5652b3098e123a0848000089",
+    "inbox_users": [
+        "5199da558e123a4ba0000001"
+    ],
+    "is_archived": false,
+    "is_deleted": false,
+    "modified": "2015-11-23T08:08:57.118Z",
+    "modified_by": "5199da123e296a4ba0000001",
+    "name": "日常费用报销 2",
+    "outbox_users": [],
+    "space": "544da71d123eca6cd0000017",
+    "state": "pending",
+    "submit_date": "2015-11-23T08:08:57.118Z",
+    "submitter": "5199da123e296a4ba0000001",
+    "submitter_name": "某某",
+    "traces": [    /* 以下为签核历程
+        {       /* 以下为签核历程的第1条纪录，即第一步
+            "approves": [
+                {
+                    "finish_date": "2015-11-23T08:08:57.115Z",
+                    "handler": "5199da123e296a4ba0000001",
+                    "handler_name": "某某",
+                    "handler_organization": "544da71d123eca6cd0000019",
+                    "handler_organization_fullname": "某公司/采购部",
+                    "handler_organization_name": "采购部",
+                    "id": "5652b3098e123a084800008b",
+                    "instance": "5652b3098e123a0848000089",
+                    "is_error": false,
+                    "is_finished": true,
+                    "is_read": true,
+                    "judge": "submitted",    /* submitted:提交；approved:核准；rejected:驳回
+                    "next_steps": [
+                        {
+                            "step": "5d71234c-a383-4bb4-abb1-2be29ba6f12d",
+                            "users": [
+                            "5199da558e123a4ba0000001"
+                            ]
+                        }
+                    ],
+                    "read_date": "2015-11-23T06:32:41.320Z",
+                    "start_date": "2015-11-23T06:32:41.320Z",
+                    "trace": "5652b3098e123a084800008a",
+                    "type": "draft",
+                    "user": "5199da558e123a4ba0000001",
+                    "user_name": "某某",
+                    "values": {
+                        "报销明细": [
+                            {
+                                "费用类别": "市内交通费",
+                                "报销金额": "100.00",
+                                "费用产生日期": "2015-10-11",
+                                "备注": "某项目"
+                            },
+                            {
+                                "费用类别": "市内交通费",
+                                "报销金额": "50.00",
+                                "费用产生日期": "2015-10-20",
+                                "备注": "某项目"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "finish_date": "2015-11-23T08:08:57.115Z",
+            "id": "5652b3098e123a084800008a",
+            "instance": "5652b3098e123a0848000089",
+            "is_finished": true,
+            "judge": "submitted",    /* submitted:提交；approved:核准；rejected:驳回
+            "previous_trace_ids": [],
+            "start_date": "2015-11-23T06:32:41.320Z",
+            "step": "73123A0A-572B-45B2-B386-FAC84A7F55B1"
+        },
+        {    /* 以下为签核历程的第2条纪录，即第二步
+            "approves": [
+                {    /* 以下为第二步的第一个处理人（会签节点可有多个处理人，则approves下有多条纪录）的提交信息
+                    "due_date": "2015-11-30T08:08:57.116Z",
+                    "handler": "5199da558e123a4ba0000001",
+                    "handler_name": "某某",
+                    "handler_organization": "544da71d123eca6cd0000019",
+                    "handler_organization_fullname": "某公司/采购部",
+                    "handler_organization_name": "采购部",
+                    "id": "5652c9998e123a084800008e",
+                    "instance": "5652b3098e123a0848000089",
+                    "is_error": false,
+                    "is_finished": false,
+                    "is_read": false,
+                    "next_steps": [],
+                    "start_date": "2015-11-23T08:08:57.117Z",
+                    "trace": "5652c9998e123a084800008d",
+                    "user": "5199da558e123a4ba0000001",
+                    "user_name": "某某"
+                }
+            ],
+            "due_date": "2015-11-30T08:08:57.116Z",
+            "id": "5652c9998e123a084800008d",
+            "instance": "5652b3098e123a0848000089",
+            "is_finished": false,
+            "previous_trace_ids": [
+                "5652b3098e123a084800008a"
+            ],
+            "start_date": "2015-11-23T08:08:57.115Z",
+            "step": "5d71234c-a383-4bb4-abb1-2be12ba6f12d"
+        }
+    ],
+    "values": { /* 当前的表单信息
+        "报销明细": [
+            {
+                "费用类别": "市内交通费",
+                "报销金额": "100.00",
+                "费用产生日期": "2015-10-11",
+                "备注": "某项目"
+            },
+            {
+                "费用类别": "市内交通费",
+                "报销金额": "50.00",
+                "费用产生日期": "2015-10-20",
+                "备注": "某项目"
+            }
+        ],
+        "报销金额合计": 150
+    }
+}
+</code></pre>
+<p>失败：</p>
+<pre><code>{
+    "errors": [
+        {
+            "errorCode": {number},  /*错误代码
+            "errorMessage": {string}    /*错误信息
+        },
+        {
+            "errorCode": {number},  /*错误代码
+            "errorMessage": {string}    /*错误信息
+        }
+    ]
+}   
+</code></pre>
+<p>样例：</p>
+<pre><code>{
+    "errors": [
+        {
+            "errorCode": {number},  /*错误代码
+            "errorMessage": {string}    /*错误信息
+        },
+        {
+            "errorCode": {number},  /*错误代码
+            "errorMessage": {string}    /*错误信息
+        }
+    ]
+}    
+</code></pre>
+</div>
+
+</body>
+</html>

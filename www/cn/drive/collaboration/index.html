@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="/cn/libs/img/icon_blue.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-rim-auto-match" content="none">
+    <title>华炎云盘 - 安全地共享、同步和协作 - 华炎办公</title>
+    <meta name="description" content="华炎云盘是一款深受公司员工喜爱的文件备份、共享与协作解决方案。提供桌面同步客户端，可以将您的本地文件夹实时自动备份到云端，并自动为您保存文件历史版本。您可以与他人共享，还可以随时使用手机访问文件。" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" type="text/css" href="/cn/libs/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/cn/libs/onepage/css/onepage.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/cn/libs/ionicons/css/ionicons.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/cn/drive/css/drive.css">
+
+    <script src="/cn/libs/jquery/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="/cn/libs/jquery/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
+    <script src="/cn/libs/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="/cn/libs/onepage/js/onepage.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if(window.screen.width <= 767) {
+                $(".telephone").attr("href","tel:4008201612");
+            }
+            function toggleNavbar() {
+                var offsetTop = $(".navbar.navbar-fixed-top").offset().top;
+                if (offsetTop > 0) {
+                    $(".navbar.navbar-fixed-top").removeClass("navbar-transparent");
+                    $(".navbar.navbar-fixed-top").addClass("filled")
+                } else {
+                    $(".navbar.navbar-fixed-top").addClass("navbar-transparent");
+                    $(".navbar.navbar-fixed-top").removeClass("filled")
+                }
+            }
+            toggleNavbar();
+            $(window).on("scroll", function() {
+                toggleNavbar();
+            })
+        })
+    </script>
+</head>
+<body class="landing-page">
+    <nav class="navbar navbar-transparent navbar-top navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar bar1"></span>
+                <span class="icon-bar bar2"></span>
+                <span class="icon-bar bar3"></span>
+                </button>
+                <div style="display: inline-block;">
+                    <div class="logo-container">
+                        <a href="/cn/" class="logo">
+                            <img src="/cn/libs/img/logo.png">
+                        </a>
+                        <div class="brand">
+                            华炎云盘
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="example" >
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/cn/drive/" class="">
+                            简介
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/drive/sharing" class="">
+                            共享
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/drive/collaboration" class="active">
+                            协作
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/drive/mobile" class="">
+                            移动
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/drive/backup" class="">
+                            同步
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/drive/security" class="">
+                            控制
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/drive/download/" class="">
+                            下载
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/cn/drive/help/" target="_blank">
+                            帮助
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/steedos/sign-up" target="_blank">
+                            注册
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/steedos/sign-in">
+                            登录
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+    <div class="wrapper steedos-drive">
+
+        <!-- index.ejs -->
+        <div class="parallax filter-gradient gray submodule" data-color="gray">
+    <div class="parallax-background">
+        <img class="parallax-background-image" src="/cn/libs/img/banner/tools_large.jpg">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="description">
+                <h2>无缝的安全共享，自由自在的协作</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section section-presentation">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<img src="/cn/libs/img/drive/collaboration.png" style="width: 300px">
+			</div>
+			<div class="col-md-12 text-center">
+				<div class="description">
+					<p>
+						在一个地方集中存储所有工作资料，让团队保持同步，有更多时间完成工作，减少在访问文件上浪费时间。
+					</p>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+</div>
+<div class="section section-presentation">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="description">
+					<h3 class="">提升团队现有工具的协同性</h3>
+					<p>
+						您的团队使用各种不同的文件和设备来完成工作，例如设计师依赖于Photoshop图片，产品组依赖于AutoCAD模型，而财务部门依赖于Excel电子表格。
+					</p>
+					<p>
+						销售人员如果要将所有这些信息融入到PowerPoint资料中，就需要将信息移入长长的电子邮件会话和缓慢的服务器上，或者重复插拔U盘。
+					</p>
+					<p>
+						或者更糟，如果是移入某些特定的在线应用，则每个人都需要学习和使用另一套系统。
+					</p>
+					<p>
+						借助华炎云盘，您的整个团队都可以在一个地方集中保存最新的文件，同时仍可使用他们喜爱的工具。
+					</p>
+				</div>
+			</div>
+			<div class="col-md-offset-1 col-md-6">
+				<img src="/cn/libs/img/drive/mobile2.png">
+			</div>
+		</div>
+		<hr>
+	</div>
+</div>
+<div class="section section-presentation">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-md-offset-1" style="float: right">
+				<div class="description">
+					<h3 class="">齐心协力,轻松保持最新状态</h3>
+					<p>
+						同步和共享与在电脑上保存文件一样简单，不需要任何特别的系统，也不需要手动进行上传和下载。
+					</p>
+					<p>
+						您只需单击一下鼠标便可邀请团队成员共享文件夹，即时创建一个协同工作区。他们加入后，从一位成员的电脑上保存到该文件夹中的任何文件都会即时自动更新到其他团队成员的电脑。
+					</p>
+					<p>
+						最棒的是，每个人都可以继续使用现有的应用进行工作。
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<img src="/cn/libs/img/drive/coll2.png">
+			</div>
+		</div>
+		<hr>
+	</div>
+</div>
+<div class="section section-presentation">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="description">
+					<h3 class="">轻松同步,保持最佳效果</h3>
+					<p>
+						我们会处理所有困难的工作，为您的团队减轻负担。
+					</p>
+					<p>
+						当您保存文件时，所有内容都会在后台上传到您的华炎云盘。
+					</p>
+					<p>
+						您可以在其他电脑上继续工作，或者通过我们的网站或iPhone版、iPad版和Android版移动应用访问文件。
+					</p>
+					<p>
+						我们的增量同步、LAN同步和流式同步等技术会对带宽进行优化，提升上传和下载的速度与效率，方便您随时随地进行无缝协作。
+					</p>
+				</div>
+			</div>
+			<div class="col-md-offset-1 col-md-6">
+				<img src="/cn/libs/img/drive/coll3.png">
+			</div>
+		</div>
+		<hr>
+	</div>
+</div>
+<div class="section section-presentation">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-md-offset-1" style="float: right">
+				<div class="description">
+					<h3 class="">保护您交换的信息</h3>
+					<p>
+						由于所有人都在一个平台上，因此您可以全面地深入查看用户访问和共享关键工作文件的情况。
+					</p>
+					<p>
+						您可利用共享控件设置权限，只允许团队成员访问，或允许外部协作者访问某些文件夹和文件。
+					</p>
+					<p>
+						活动日志会跟踪用户访问内容的情况，包括新的共享文件夹、获邀请的成员、权限的更改等。
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<img src="/cn/libs/img/drive/coll4.png">
+			</div>
+		</div>
+	</div>
+</div>
+
+        <!-- footer -->
+        <div class="footer">
+            <div class="overlayer">
+                <div class="container">
+                    <div class="row support">
+                        <div class="col-sm-4 col-xs-4">
+                            <h4>联系我们</h4>
+                            <ul class="list-unstyled">
+                                <li> <a class="telephone">热线：400-820-1612</a></li>
+                                <li> <a>邮箱：support@steedos.com</a></li>
+                                <li> <a>QQ：1471093381</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                            <h4>下载客户端</h4>
+                            <ul class="list-unstyled">
+                                <li> <a href="http://itunes.apple.com/cn/app/hua-yan-yun-pan-si-you-yunno/id955295549?l=zh&ls=1&mt=8" target="_blank">iPhone / iPad</a> </li>
+                                <li> <a href="http://oss.steedos.com/apps/drive/android/drive.apk" target="_blank">Android</a> </li>
+                                <li> <a href="http://oss.steedos.com/apps/drive/windows/drive.exe" target="_blank">Windows</a> </li>
+                                <li> <a href="http://oss.steedos.com/apps/drive/mac/drive.pkg" target="_blank">Mac</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-4 col-xs-4">
+                            <h4>关于华炎云盘</h4>
+                            <div class="footer-description">
+                                <span>
+                                    华炎云盘是一款深受公司员工喜爱的文件备份、共享与协作解决方案。提供桌面同步客户端，可以将您的本地文件夹实时自动备份到云端，并自动为您保存文件历史版本。您可以与他人共享，还可以随时使用手机访问文件。
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr style="border-color: #dddddd">
+                    <div class="row">
+                        <div class="social-area text-center" itemscope="" itemtype="http://schema.org/LocalBusiness">
+                            <a itemprop="url" href="/cn/" class="footer-brand">
+                                <div class="logo">
+                                    <img itemprop="logo" src="/cn/libs/img/logo.png">
+                                </div>
+                                <span itemprop="name">华炎办公</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="credits">
+                            © 华炎软件. 保留所有权利.
+                            <a class="steedos-rule" href="/cn/steedos/terms/" target="_blank">条款与规定</a>
+                            <a class="steedos-rule" href="/cn/steedos/privacy/" target="_blank">隐私保护</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

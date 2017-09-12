@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>华炎云帮助中心 - 流程条件的编写规则</title>
+  <link rel="shortcut icon" href="/website/img/workflow/AppIcon76x76.png" />
+  <meta name="Description" content="华炎云是深受公司员工喜爱的云端的企业管理软件，帮助您的团队随时随地的沟通与协作。它的设置、使用和管理都很简单，可让您更明智地工作并专注于核心业务。">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+            
+  <link href="/website/static/lib/fontawesome/css/font-awesome.css" rel="stylesheet"/>
+
+  <script src="/website/libs/jquery.min.js" type="text/javascript"></script>
+  <script src="/website/js/generated_toc.js" type="text/javascript"></script>
+            
+  <link href="/website/libs/semantic.css" rel="stylesheet"/>
+  <script src="/website/libs/semantic.js" type="text/javascript"></script>
+
+  <script type="text/javascript" src="/website/js/scrolltopcontrol.js"></script>
+  <link href="/website/libs/spacelab.min.css" rel="stylesheet"/>
+  <link href="/website/libs/spacelab.fix.css" rel="stylesheet"/>
+  <link href="/website/css/odoo/website.css" id="website_css" rel="stylesheet"/>
+  <link href="/website/css/steedos.css" id="steedos_css" rel="stylesheet"/>
+  
+  <script>
+
+  var regExp = {
+    ios          : /(iPad|iPhone|iPod)/g,
+    mobileChrome : /(CriOS)/g,
+    mobile       : /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/g
+  }
+
+  window.agent = {}
+  window.agent.isMobile = navigator.userAgent.match(regExp.mobile)
+
+  $(document)
+    .ready(function() {
+      $('.ui.menu .ui.dropdown').dropdown({
+        on: 'hover'
+      });
+      $('.ui.menu a.item')
+        .on('click', function() {
+          $(this)
+            .addClass('active')
+            .siblings()
+            .removeClass('active');
+      });
+      if (window.agent.isMobile){
+
+      }
+
+    });
+  </script>
+</head>
+<body>
+<div class="ui top secondary pointing menu" id="navbar" style="height: 44px;border-bottom: 1px solid #DDDDDD; background-color: #F3F3F3">
+  
+  <div class="ui dropdown item">
+    帮助中心 <i class="dropdown icon"></i>
+    <div class="ui menu">
+        <a class="item" href="/cn/help/workflow3.0/" target="_blank">审批王</a>
+        <a class="item" href="/cn/help/chat/">享聊</a>
+        <a class="item" href="/cn/help/drive/">云盘</a>
+    </div>
+  </div>
+  <div class="right menu">
+    <!-- <a class="item" href="http://chat.steedos.com/channel/steedos-support" target="_blank">联系我们</a> -->
+  </div>
+  
+</div>
+
+<div class="ui " style="margin: 20px; min-height: 100%;">
+    <div class="ui breadcrumb">
+  <a class="section" href="/cn/help/workflow">审批王</a>
+  <i class="right angle icon divider"></i>
+  <span class="section">流程条件的编写规则</span>
+</div>
+
+  
+<h2>流程条件的编写规则</h2>
+
+<p>审批王在设计流程时，支持在步骤中设置条件，系统可以智能地根据预设条件过滤下一步。</p>
+
+<p>要注意的是：必须选中条件步骤，添加连线后，才能在连线上设置条件。</p>
+<p>如下图：</p>
+<img src="/website/img/help/cn/workflow/condition0.png" style="max-height: 100%;max-width: 100%;">
+
+<p>条件编写有以下规则：</p>
+<ul>
+<li>条件中引用字段需使用字段名+{}，如：{请假天数}
+<li>条件中使用的符号必须是半角符号；
+<li>条件中嵌套条件时，用()
+<li>条件中可以使用公式和函数，详见：<a href="../formula/">表单公式的编写规则</a>；
+</ul>
+<br>
+<p>条件中允许使用以下符号来表示对数值的判断：</p>
+<ul>
+<li>=：等于，如：{借款金额}=1000
+<li>>：大于，如：{借款金额}>1000
+<li><：小于，如：{借款金额}<1000
+<li>>=：大于等于，如：sum({报销费用合计})>=1000
+<li><=：小于等于，如：max({单笔费用金额})<=1000
+<li>!=：不等于，如：sum({借款金额})!=1000
+<li><>：不等于，如：sum({借款金额})<>1000
+<li>如上图，在指向“总经理审批”的连线上写的条件是：{请假天数}>7
+<li>在指向“人力资源部审批”的连线上写的是：{请假天数}<=7
+</ul>
+
+<p>系统就会自动根据申请人所填写的请假天数来决定下一步交给谁去审批了。</p>
+<br>
+<p>编写条件时，还可以使用以下符号来表示是与非：</p>
+
+<ul>
+<li>=：是，如：{项目}="北京"
+<li>!：非，如：{项目}!="北京"
+</ul>
+
+<p>通过设置这样的条件，可以实现让不同的经理审批不同的项目。</p>
+<br>
+<p>有时，我们需要根据申请人的角色、或所在部门来进行判断。</p>
+<p>如：申请人是普通员工，就交由部门经理审批；申请人是部门经理就交由副总经理审批。</p>
+<p>条件中，首先要使用系统提供的函数来获取相关的信息。如：{applicant.roles}获取申请人的角色；<br>详见：<a href="../formula/">表单公式的编写规则</a>；
+<br>然后对获取的信息进行判断。</p>
+<p>请注意：由于一个人可能承担了多个角色，所以应该用contains（包含）来判断。例如：</p>
+
+<ul>
+<li>{applicant.roles}.contains('部门经理')     申请人是部门经理；
+<li>!({applicant.roles}.contains('部门经理'))  申请人不是部门经理；
+</ul>
+<br>
+<p>下图就是根据申请人的身份进行判断的，通过这样的条件设置，大大地提高了审批的效率。</p>
+
+<img src="/website/img/help/cn/workflow/condition1.png" style="max-height: 100%;max-width: 100%;">
+
+<p>有时，一个条件还不够，需要多个条件互相组合。</p>
+<p>此时，可以使用以下符号来表示组合关系：</p>
+
+<ul>
+<li>||：或，如：({借款金额}<1000)||{applicant.roles}.contains('部门经理')
+<li>&&：与，如：({借款金额}<1000)&&{applicant.roles}.contains('部门经理')
+</ul>
+
+<p>如，上图中的第一个条件：申请人既不是部门经理也不是副总经理；</p>
+<p>正确的写法是：!({applicant.roles}.contains('部门经理')||{applicant.roles}.contains('副总经理'))</p>
+<br>
+<p>和公式一样，表单上“选择用户”字段中被指定人的所在部门、角色、姓名也可以作为判断对象。<br>如何获取相关信息，详见：<a href="../formula/">表单公式的编写规则</a>；</p>
+
+<p>除“选择用户”字段外，还有一种特殊的字段：“选择部门”，用于填写时任意指定部门。<br>系统支持通过函数获取部门的名称，以用于条件判断：</p>
+
+<ul>
+  <li>{字段名}.name：自动获取该字段中部门的名称；
+</ul>
+
+<p>例如：字段：“成本负担部门”是填单人指定的，在条件中可以设定总经办负担的申请单由办公室主任审批：</p>
+<p>添加连线指向“办公室主任审批”，条件：{成本负担部门}.name.contains('总经办')</p>
+<br>
+<p>以上就是审批王中流程条件的编写规则，如果您还有其他的问题或者新的建议，欢迎致电：400-820-1612。</p>
+</div>
+
+</body>
+</html>
