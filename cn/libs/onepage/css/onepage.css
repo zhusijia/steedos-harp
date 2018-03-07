@@ -48,6 +48,12 @@ body {
   font-family: "Helvetica Neue","Open Sans",Arial,sans-serif;
 }
 
+@media (max-width:767px) {
+  .row.support .col-sm-4:last-child {
+    display: none;
+  }
+}
+
 .card {
   display: inline-block;
   position: relative;
@@ -73,7 +79,7 @@ body {
   position: relative;
   z-index: 2;
   min-height: 370px;
-  // max-width: 530px;
+  /* max-width: 530px; */
   text-align: center;
 }
 
@@ -139,7 +145,7 @@ a {
   color: #2ca8ff;
 }
 a:hover, a:focus {
-  // color: #109cff;
+  /* color: #109cff; */
   color: #333;
   text-decoration: none;
 }
@@ -751,22 +757,28 @@ a:focus, a:active {
   display: inline-block;
 }
 
-.footer .footer-brand .logo {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto;
+.QR-code{
+ width:100px;
 }
-
+@media (max-width: 767px) {
+  .QR-code {
+    margin: 0 auto;
+  }
+}
+.QR-label{
+  margin-top: 10px;
+  float: left;
+}
+.QR-code img{
+  width:100%;
+}
 .footer .footer-brand .logo img {
-  width: 45px;
-  height: 45px;
+  width: 50%;
 }
 
 .footer .footer-brand span {
   font-size: 16px;
-  margin: 5px 0 25px;
+  margin: 5px 0 10px;
   color: #FFFFFF;
   display: block;
 }
@@ -1183,6 +1195,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
   height: auto;
   position: relative;
 }
+
+@media (max-width: 1280px) {
+  .landing-page .parallax .parallax-background img{
+    width: auto;
+    height: auto;
+    position: relative;
+  }
+}
+
 .landing-page .parallax .parallax-image{
   width: 100%;
   margin: 0 auto;
@@ -1643,7 +1664,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
 } 
 
 .fixed-plugin .adjustments-line p{
-    float: left;
     display: inline-block;
     margin-bottom: 0;
     font-size: 1em;
@@ -1861,10 +1881,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
   /*.landing-page .parallax {
     height: 550px;
   }*/
-  .landing-page .parallax .parallax-background img {
+  
+  /* .landing-page .parallax .parallax-background img {
     width: auto;
     height: 100%;
-  }
+  } */
   .landing-page .parallax .description{
     margin-top: 65px;  
   }
@@ -1899,4 +1920,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#de8e0009', e
     .landing-page .navbar-top{
         padding-top: 10px;
     }
+}
+
+.steedos-help .parallax.submodule {
+  height: 250px;
+}
+
+.steedos-help .parallax.submodule .description {
+  margin-top: 85px;
 }
